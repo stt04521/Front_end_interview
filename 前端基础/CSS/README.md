@@ -2,7 +2,6 @@
 
 Cascading Style Sheet 层叠样式表
 
-### [CSS 选择器](./CSS选择器.md)
 
 ### 盒模型
 
@@ -12,10 +11,6 @@ Cascading Style Sheet 层叠样式表
 
 标准模型的宽高是指的 content 区宽高；
 IE 盒模型的宽高是指的 content+padding+border 的宽高。
-
-![W3C盒模型](../../img/stadardBox.png)
-
-![IE盒模型](../../img/strangeBox.png)
 
 ### CSS 如何设置这两种盒模型？
 
