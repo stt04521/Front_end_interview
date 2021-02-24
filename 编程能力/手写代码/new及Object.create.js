@@ -19,7 +19,8 @@ function new_ (){
 // Obect.create
 
 Object.prototype.create = function (obj){
-    let fun = function(){};
-    fun.prototype = obj;
-    return new fun;
+    let Fn = function(){};
+    Fn.prototype = obj;
+    Fn.prototype.constructor = Fn;
+    return new Fn;
 }
