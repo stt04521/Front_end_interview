@@ -18,6 +18,10 @@ function unique(arr){
     return Array.from(new Set(arr))
 }
 
+function name(params) {
+    return [...new Set(params)];
+}
+
 // for 循环 然后，splice 去重
 
 function unique(arr){
