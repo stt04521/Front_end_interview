@@ -17,7 +17,9 @@ function new_ (){
 }
 
 // Obect.create
-
+// Object.create() 会创建一个 “新” 对象，
+// 然后将此对象内部的 [[Prototype]] 关联到你指定的对象（Foo.prototype）
+// 。Object.create(null) 创建一个空 [[Prototype]] 链接的对象，这个对象无法进行委托。
 Object.prototype.create = function (obj){
     let Fn = function(){};
     Fn.prototype = obj;
