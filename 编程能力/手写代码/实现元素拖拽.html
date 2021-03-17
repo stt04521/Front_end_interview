@@ -1,0 +1,77 @@
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Drag and Drop</title>
+	<style>
+        .square {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            background-color: #000;
+
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+	<div class="square">
+	</div>
+
+	<script>
+        // 实现正方形的拖拽
+        // 记录鼠标位置，赋予正方形position 属性 的 top 和 left
+        // 记录事件 mousedown mousemove mouseup
+
+        window.onload = function() {
+            var dragDrop = function() {
+                var dragging = null;	// 记录拖拽的对象
+                var diffX = 0;			// 记录鼠标与正方形边缘的距离
+                var diffY = 0;			// 同上
+
+                function dragEvent(event) {
+                    var that = event.target;
+
+                    // 判断事件类型
+                    switch(event.type) {
+                        // 记录鼠标点击处的位置，与目标的位置做差值
+                        case "mousedown":
+                            dragging = that;
+                            diffX = event.clientX - that.offsetLeft;
+                            diffY = event.clientY - that.offsetTop;
+                            break;
+
+                        // 实时修改正方形的position中的 top 和 left值
+                        case "mousemove":
+                            if (dragging !== null) {
+                                dragging.style.left = event.clientX - diffX + "px";
+                                dragging.style.top = event.clientY - diffY + "px";					
+                            }
+                            break;
+
+                        // 将拖拽对象置为 null
+                        case "mouseup":
+                            dragging = null;
+                            break;
+                    }
+                    // ... do something
+                }
+
+                // 返回对象
+                return {
+                    /*
+                        触发，监听以上三个事件，监听对象document
+                    */
+                    fire: function() {
+                        document.addEventListener("mousedown", dragEvent, false);
+                        document.addEventListener("mousemove", dragEvent, false);
+                        document.addEventListener("mouseup", dragEvent, false);
+                    }
+                }
+            }();
+
+            dragDrop.fire();
+        }
+    </script>
+</body>
+</html>

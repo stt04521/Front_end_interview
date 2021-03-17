@@ -1,0 +1,68 @@
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>2</title>
+        <style>
+            .menu {
+                border: 1px solid #000;
+                width: 100px;
+                padding: 0;
+
+                position: absolute;
+
+                display: none;
+            }
+
+            .menu li {
+                list-style: none;
+                border-bottom: 1px solid #000;
+            }
+
+            .menu a {
+                display: block;
+                text-decoration: none;
+            }
+
+            .menu a:hover {
+                background-color: #000;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="menu">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">8</a></li>
+        </ul>
+    
+        <script>
+            // 页面内实现右键菜单组件功能。
+            // 点击菜单栏外 消失
+            window.onload = function() {
+                document.addEventListener("contextmenu", function(event) {
+                    event.preventDefault();	// 取消默认行为，即菜单
+
+                    // 菜单跟随鼠标位置改变
+                    var menu = document.getElementsByTagName("ul")[0];
+                    menu.style.left = event.clientX + "px";
+                    menu.style.top = event.clientY + "px";
+                    menu.style.display = "block";
+                });
+
+                // 菜单默认 不可见
+                // 对页面除菜单外地方点击，菜单消失
+                document.addEventListener("click", function(event) {
+                    document.getElementsByTagName("ul")[0].style.display = "none";
+                });
+
+            }
+        </script>
+    </body>
+    </html>
